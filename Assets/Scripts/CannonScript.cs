@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CannonScript : MonoBehaviour
 {
@@ -9,7 +7,10 @@ public class CannonScript : MonoBehaviour
     float moveSpeed = 0.15f;
     [SerializeField]
     float rotateSpeed = 2f;
+    [SerializeField]
+    float velocity = 15f;
     Transform myTransform;
+    public GameObject cannonball;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,10 @@ public class CannonScript : MonoBehaviour
     {
         MoveCannon(Input.GetAxis("Vertical"));
         RotateCannon(Input.GetAxis("Horizontal"));
+
+        if (Input.GetButtonUp("Fire1")) {
+            Fire();
+        }
     }
 
     private void MoveCannon(float direction)
@@ -36,5 +41,12 @@ public class CannonScript : MonoBehaviour
         var rotate = rotateSpeed * direction * -1;
 
         transform.Rotate(0, 0, rotate);
+    }
+
+    private void Fire() {
+        var ball = Instantiate(cannonball, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        var rbody = ball.GetComponent<Rigidbody2D>();
+
+        rbody.velocity = transform.right * velocity;
     }
 }
