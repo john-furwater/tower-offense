@@ -6,9 +6,10 @@ Tower Offense is a Tetris style game where players must build a tower out of des
 
 ## Test Scenes:
 ### CannonScene
-Controls are as follows
+Controls are as follows:
 - Up: 'w', up arrow, or joystick up axis
 - Down: 's', down arrow, or joystick down axis
 - Rotate clockwise: 'd', right arrow, or joystick right axis
 - Rotate counter-clockwise: 'a', left arrow, or joystick left axis
 - Fire: left-control, mouse left-click, or fire1 button
+The longer you hold the button down, the more velocity the cannonball will get fired with.

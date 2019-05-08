@@ -289,8 +289,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216456494}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 3.42}
-  m_LocalScale: {x: 11, y: 11, z: 1}
+  m_LocalPosition: {x: 0, y: 2.392, z: 3.42}
+  m_LocalScale: {x: 11, y: 11, z: 1.478}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -391,6 +391,7 @@ MonoBehaviour:
   moveSpeed: 0.15
   rotateSpeed: 2
   velocity: 15
+  shotPower: {fileID: 11400000, guid: c34fca08caff34d04bb6d3473e8b2010, type: 2}
   cannonball: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
     type: 3}
 --- !u!1 &1957813726

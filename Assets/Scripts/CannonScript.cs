@@ -9,13 +9,13 @@ public class CannonScript : MonoBehaviour
     float rotateSpeed = 2f;
     [SerializeField]
     float velocity = 15f;
-    Transform myTransform;
+    [SerializeField]
+    FloatVariable shotPower;
     public GameObject cannonball;
 
     // Start is called before the first frame update
     void Start()
     {
-        myTransform = transform;
     }
 
     // Update is called once per frame
@@ -24,8 +24,22 @@ public class CannonScript : MonoBehaviour
         MoveCannon(Input.GetAxis("Vertical"));
         RotateCannon(Input.GetAxis("Horizontal"));
 
+        if (Input.GetButton("Fire1"))
+        {
+            ChargeShot();
+        }
+
         if (Input.GetButtonUp("Fire1")) {
             Fire();
+            shotPower.ResetValue();
+        }
+    }
+
+    private void ChargeShot() {
+        shotPower.Value += .01f;
+
+        if (shotPower.Value > 1) {
+            shotPower.Value = 1;
         }
     }
 
@@ -47,6 +61,6 @@ public class CannonScript : MonoBehaviour
         var ball = Instantiate(cannonball, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         var rbody = ball.GetComponent<Rigidbody2D>();
 
-        rbody.velocity = transform.right * velocity;
+        rbody.velocity = transform.right * velocity * shotPower.Value;
     }
 }
