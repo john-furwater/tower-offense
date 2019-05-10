@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4e573598bb247b6990395876beef1a, type: 3}
   m_Name: ShotPower
   m_EditorClassIdentifier: 
-  InitialValue: 0.3
+  InitialValue: 0

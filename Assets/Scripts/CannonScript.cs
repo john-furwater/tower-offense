@@ -11,6 +11,7 @@ public class CannonScript : MonoBehaviour
     float velocity = 15f;
     [SerializeField]
     FloatVariable shotPower;
+    float minimumShotPower = 0.3f;
     public GameObject cannonball;
 
     // Start is called before the first frame update
@@ -61,6 +62,6 @@ public class CannonScript : MonoBehaviour
         var ball = Instantiate(cannonball, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         var rbody = ball.GetComponent<Rigidbody2D>();
 
-        rbody.velocity = transform.right * velocity * shotPower.Value;
+        rbody.velocity = transform.right * velocity * (shotPower.Value + minimumShotPower);
     }
 }

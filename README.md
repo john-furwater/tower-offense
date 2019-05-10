@@ -12,4 +12,5 @@ Controls are as follows:
 - Rotate clockwise: 'd', right arrow, or joystick right axis
 - Rotate counter-clockwise: 'a', left arrow, or joystick left axis
 - Fire: left-control, mouse left-click, or fire1 button
+
 The longer you hold the button down, the more velocity the cannonball will get fired with.
