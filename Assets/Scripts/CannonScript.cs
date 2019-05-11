@@ -12,6 +12,7 @@ public class CannonScript : MonoBehaviour
     [SerializeField]
     FloatVariable shotPower;
     float minimumShotPower = 0.3f;
+    bool isCooling;
     public GameObject cannonball;
 
     // Start is called before the first frame update
@@ -25,6 +26,11 @@ public class CannonScript : MonoBehaviour
         MoveCannon(Input.GetAxis("Vertical"));
         RotateCannon(Input.GetAxis("Horizontal"));
 
+        if (isCooling) {
+            CoolShot();
+            return;
+        }
+
         if (Input.GetButton("Fire1"))
         {
             ChargeShot();
@@ -32,8 +38,12 @@ public class CannonScript : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1")) {
             Fire();
-            shotPower.ResetValue();
+            isCooling = true;
         }
+    }
+
+    private void handleShotInput() { 
+        
     }
 
     private void ChargeShot() {
@@ -41,6 +51,17 @@ public class CannonScript : MonoBehaviour
 
         if (shotPower.Value > 1) {
             shotPower.Value = 1;
+        }
+    }
+
+    private void CoolShot()
+    {
+        shotPower.Value -= .01f;
+
+        if (shotPower.Value < shotPower.InitialValue)
+        {
+            shotPower.Value = shotPower.InitialValue;
+            isCooling = false;
         }
     }
 
