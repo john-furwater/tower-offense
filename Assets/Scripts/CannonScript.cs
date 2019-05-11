@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
 public class CannonScript : MonoBehaviour
-{
-
+{ 
+    [SerializeField]
+    bool isPlayerOne = true;
     [SerializeField]
     float moveSpeed = 0.15f;
     [SerializeField]
@@ -13,30 +14,36 @@ public class CannonScript : MonoBehaviour
     FloatVariable shotPower;
     float minimumShotPower = 0.3f;
     bool isCooling;
+    string horizontal = "Horizontal";
+    string vertical = "Vertical";
+    string fire1 = "Fire1";
     public GameObject cannonball;
 
     // Start is called before the first frame update
     void Start()
     {
+        horizontal += isPlayerOne ? "_P1" : "_P2";
+        vertical += isPlayerOne ? "_P1" : "_P2";
+        fire1 += isPlayerOne ? "_P1" : "_P2";
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveCannon(Input.GetAxis("Vertical"));
-        RotateCannon(Input.GetAxis("Horizontal"));
+        MoveCannon(Input.GetAxis(vertical));
+        RotateCannon(Input.GetAxis(horizontal));
 
         if (isCooling) {
             CoolShot();
             return;
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton(fire1))
         {
             ChargeShot();
         }
 
-        if (Input.GetButtonUp("Fire1")) {
+        if (Input.GetButtonUp(fire1)) {
             Fire();
             isCooling = true;
         }
@@ -74,9 +81,7 @@ public class CannonScript : MonoBehaviour
 
     private void RotateCannon(float direction)
     {
-        var rotate = rotateSpeed * direction * -1;
-
-        transform.Rotate(0, 0, rotate);
+        transform.Rotate(0, 0, rotateSpeed * direction);
     }
 
     private void Fire() {

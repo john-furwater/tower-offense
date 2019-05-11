@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TargetScript : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class TargetScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(gameObject);
+        Destroy(gameObject); 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
