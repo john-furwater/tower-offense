@@ -85,7 +85,8 @@ public class CannonScript : MonoBehaviour
     }
 
     private void Fire() {
-        var ball = Instantiate(cannonball, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        var spawnPoint = transform.Find("CannonballSpawnPoint").gameObject.transform;
+        var ball = Instantiate(cannonball, new Vector2(spawnPoint.position.x, spawnPoint.position.y), Quaternion.identity);
         var rbody = ball.GetComponent<Rigidbody2D>();
 
         rbody.velocity = transform.right * velocity * (shotPower.Value + minimumShotPower);
