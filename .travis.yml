@@ -1,0 +1,40 @@
+sudo: required
+language: bash
+env:
+  global:
+  - IMAGE_NAME=gableroux/unity3d:2019.1.0f2
+  - BUILD_NAME=TowerOffense
+services:
+- docker
+before_install:
+- docker pull $IMAGE_NAME
+jobs:
+  include:
+  - stage: build
+    env: BUILD_TARGET=StandaloneLinux64
+    script: "chmod +x ./ci/build.sh && ./ci/docker_build.sh"
+    addons:
+      artifacts:
+        target_paths:
+        - "./Builds/"
+  - stage: build
+    env: BUILD_TARGET=StandaloneOSX
+    script: "chmod +x ./ci/build.sh && ./ci/docker_build.sh"
+    addons:
+      artifacts:
+        target_paths:
+        - "./Builds/"
+  - stage: build
+    env: BUILD_TARGET=StandaloneWindows64
+    script: "chmod +x ./ci/build.sh && ./ci/docker_build.sh"
+    addons:
+      artifacts:
+        target_paths:
+        - "./Builds/"
+  - stage: build
+    env: BUILD_TARGET=WebGL
+    script: "chmod +x ./ci/build.sh && ./ci/docker_build.sh"
+    addons:
+      artifacts:
+        target_paths:
+        - "./Builds/"
