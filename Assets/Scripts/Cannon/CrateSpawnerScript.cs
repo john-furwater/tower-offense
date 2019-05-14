@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CrateSpawner : MonoBehaviour
+public class CrateSpawnerScript : MonoBehaviour
 {
     [SerializeField]
     GameObject crate;
