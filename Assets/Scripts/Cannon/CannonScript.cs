@@ -19,7 +19,6 @@ public class CannonScript : MonoBehaviour
     string fire1 = "Fire1";
     public GameObject cannonball;
 
-    // Start is called before the first frame update
     void Start()
     {
         horizontal += isPlayerOne ? "_P1" : "_P2";
@@ -27,7 +26,6 @@ public class CannonScript : MonoBehaviour
         fire1 += isPlayerOne ? "_P1" : "_P2";
     }
 
-    // Update is called once per frame
     void Update()
     {
         MoveCannon(Input.GetAxis(vertical));
@@ -47,10 +45,6 @@ public class CannonScript : MonoBehaviour
             Fire();
             isCooling = true;
         }
-    }
-
-    private void handleShotInput() { 
-        
     }
 
     private void ChargeShot() {

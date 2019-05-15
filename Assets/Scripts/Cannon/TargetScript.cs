@@ -7,9 +7,6 @@ public class TargetScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.transform.name);
-        Debug.Log(other.gameObject.name);
-
         if (other.gameObject.name != "Cannonball(Clone)")
             return;
         

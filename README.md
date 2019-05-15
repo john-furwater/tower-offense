@@ -8,12 +8,14 @@ Tower Offense is a Tetris style game where players must build a tower out of des
 ### CannonScene
 Controls are as follows:
 
-|   Axis       | Player 1 | Player 2 |
-| ------------ |:--------:|:--------:|
-| Move Up      | w        | o        |
-| Move Down    | s        | l        |
-| Rotate Left  | a        | k        |
-| Rotate Right | d        | ;        |
-| Fire Cannon  | e        | i        |
+|   Axis              | Player 1 | Player 2 |
+| ------------------- |:--------:|:--------:|
+| Move Cannon Up      | w        | o        |
+| Move Cannon Down    | s        | l        |
+| Rotate Cannon Left  | a        | k        |
+| Rotate Cannon Right | d        | ;        |
+| Fire Cannon         | e        | i        |
+| Move Crate Left     | z        | ,        |
+| Move Crate Right    | x        | .        |
 
 The longer you hold the `Fire Cannon` button down, the more velocity the cannonball will get shot with.  Once the button gets released, you must wait until the `Charge Bar` goes away before you can fire again.
