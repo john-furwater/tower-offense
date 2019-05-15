@@ -7,6 +7,9 @@ public class TargetScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.gameObject.name != "Cannonball(Clone)")
+            return;
+        
         Destroy(gameObject);
         gameOver.SetActive(true);
     }
