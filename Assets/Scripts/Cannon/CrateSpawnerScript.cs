@@ -29,6 +29,8 @@ public class CrateSpawnerScript : MonoBehaviour
     }
 
     void SpawnCrate() {
-        Instantiate(crate, transform);
+        var newCrate = Instantiate(crate, transform);
+
+        newCrate.gameObject.tag = isPlayerOne ? "P1" : "P2";
     }
 }
