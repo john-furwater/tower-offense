@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3379483953877893338}
   - component: {fileID: 3379483953877893339}
   - component: {fileID: 3379483953877893336}
+  - component: {fileID: 6420648936245128949}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -118,3 +119,15 @@ CircleCollider2D:
   m_Offset: {x: -0.16, y: 0}
   serializedVersion: 2
   m_Radius: 2.619339
+--- !u!114 &6420648936245128949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379483953877893337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67746812e4314c5cbf03728dd8f8ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

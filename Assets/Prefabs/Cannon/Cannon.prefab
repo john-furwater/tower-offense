@@ -125,10 +125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0652c23e2808a41a88a9599a17956548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crateHolder: {fileID: 7708621233853323332, guid: 7ef8304e5c15c4f10b02a4048b5f9493,
+    type: 3}
   isPlayerOne: 1
   moveSpeed: 0.15
   rotateSpeed: 2
   velocity: 20
+  initialMaxY: -8.3
+  minY: -8.75
   shotPower: {fileID: 11400000, guid: c34fca08caff34d04bb6d3473e8b2010, type: 2}
   cannonball: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
     type: 3}

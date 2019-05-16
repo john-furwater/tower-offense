@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class CannonScript : MonoBehaviour
-{ 
+{
     [SerializeField]
     bool isPlayerOne = true;
     [SerializeField]
@@ -10,6 +11,10 @@ public class CannonScript : MonoBehaviour
     float rotateSpeed = 2f;
     [SerializeField]
     float velocity = 15f;
+    [SerializeField]
+    float initialMaxY = -8.3f;
+    [SerializeField]
+    float minY = -8.75f;
     [SerializeField]
     FloatVariable shotPower;
     float minimumShotPower = 0.3f;
@@ -68,9 +73,7 @@ public class CannonScript : MonoBehaviour
 
     private void MoveCannon(float direction)
     {
-        var positionY = transform.position.y + (moveSpeed * direction);
-
-        transform.position = new Vector2(transform.position.x, positionY);
+        transform.position = new Vector2(transform.position.x, GetPositionY(direction));
     }
 
     private void RotateCannon(float direction)
@@ -78,11 +81,36 @@ public class CannonScript : MonoBehaviour
         transform.Rotate(0, 0, rotateSpeed * direction);
     }
 
-    private void Fire() {
+    private void Fire() 
+    {
         var spawnPoint = transform.Find("CannonballSpawnPoint").gameObject.transform;
         var ball = Instantiate(cannonball, new Vector2(spawnPoint.position.x, spawnPoint.position.y), Quaternion.identity);
         var rbody = ball.GetComponent<Rigidbody2D>();
 
         rbody.velocity = transform.right * velocity * (shotPower.Value + minimumShotPower);
+    }
+
+    private float GetPositionY(float direction)
+    {
+        var positionY = transform.position.y + (moveSpeed * direction);
+
+        if (positionY < minY)
+            return minY;
+
+        var maxY = GetMaxY();
+
+        if (positionY > maxY)
+            return maxY;
+
+        return positionY;
+    }
+
+    private float GetMaxY()
+    {
+        var player = isPlayerOne ? "P1" : "P2";
+        var crateHolder = GameObject.Find("CrateHolder");
+        var crateYs = crateHolder.GetComponentsInChildren<Transform>().ToList().Where(t => t.gameObject.tag == player).Select(t => t.position.y);
+
+        return crateYs.Any() ? crateYs.Max() : initialMaxY;
     }
 }

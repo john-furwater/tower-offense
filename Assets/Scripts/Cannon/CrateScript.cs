@@ -4,6 +4,6 @@ public class CrateScript : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D other)
     {
-        transform.SetParent(null, true);
+        transform.SetParent(GameObject.Find("CrateHolder").transform, true);
     }
 }
