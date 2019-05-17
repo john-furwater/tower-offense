@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public class CannonScript : MonoBehaviour
@@ -17,15 +18,18 @@ public class CannonScript : MonoBehaviour
     float minY = -8.75f;
     [SerializeField]
     FloatVariable shotPower;
+    [SerializeField]
+    GameObject cannonball;
     float minimumShotPower = 0.3f;
     bool isCooling;
     string horizontal = "Horizontal";
     string vertical = "Vertical";
     string fire1 = "Fire1";
-    public GameObject cannonball;
+    AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         horizontal += isPlayerOne ? "_P1" : "_P2";
         vertical += isPlayerOne ? "_P1" : "_P2";
         fire1 += isPlayerOne ? "_P1" : "_P2";
@@ -88,6 +92,8 @@ public class CannonScript : MonoBehaviour
         var rbody = ball.GetComponent<Rigidbody2D>();
 
         rbody.velocity = transform.right * velocity * (shotPower.Value + minimumShotPower);
+
+        audioSource.Play();
     }
 
     private float GetPositionY(float direction)
