@@ -3,7 +3,7 @@ language: bash
 env:
   global:
   - IMAGE_NAME=gableroux/unity3d:2019.1.0f2
-  - BUILD_NAME=TowerOffense
+  - BUILD_NAME=TowerOffenseCi
 services:
 - docker
 before_install:

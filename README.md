@@ -1,4 +1,7 @@
 # Tower Offense
+
+[![Build Status](https://travis-ci.com/john-furwater/tower-offense.svg?branch=master)](https://travis-ci.com/john-furwater/tower-offense)
+
 Tower Offense is a Tetris style game where players must build a tower out of descending shapes, as well as move a sliding canon attached to a rail next to their tower, attacking opponents towers and defending their own.  A notable difference from Tetris is that blocks do NOT disappear when you complete a solid line.
 
 ## Unity version:
