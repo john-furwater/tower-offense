@@ -3,7 +3,7 @@ language: bash
 env:
   global:
   - IMAGE_NAME=gableroux/unity3d:2019.1.0f2
-  - BUILD_NAME=TowerOffense
+  - BUILD_NAME=TowerOffenseCi
 services:
 - docker
 before_install:
@@ -48,10 +48,10 @@ jobs:
       artifacts:
         target_paths:
         - "./Builds/"
-  - stage: build
-    env: BUILD_TARGET=WebGL
-    script: "chmod +x ./ci/before_script.sh && chmod +x ./ci/build.sh && chmod +x ./ci/docker_build.sh && ./ci/docker_build.sh"
-    addons:
-      artifacts:
-        target_paths:
-        - "./Builds/"
+  # - stage: build
+  #   env: BUILD_TARGET=WebGL
+  #   script: "chmod +x ./ci/before_script.sh && chmod +x ./ci/build.sh && chmod +x ./ci/docker_build.sh && ./ci/docker_build.sh"
+  #   addons:
+  #     artifacts:
+  #       target_paths:
+  #       - "./Builds/"
