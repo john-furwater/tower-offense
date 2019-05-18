@@ -7,6 +7,7 @@ static class BuildCommand
     static string GetArgument(string name)
     {
         string[] args = Environment.GetCommandLineArgs();
+
         for (int i = 0; i < args.Length; i++)
         {
             if (args[i].Contains(name))
@@ -14,6 +15,7 @@ static class BuildCommand
                 return args[i + 1];
             }
         }
+
         return null;
     }
 
@@ -32,7 +34,7 @@ static class BuildCommand
         string buildTargetName = GetArgument("customBuildTarget");
         Console.WriteLine(":: Received customBuildTarget " + buildTargetName);
 
-        return ToEnum<BuildTarget>(buildTargetName, BuildTarget.NoTarget);
+        return ToEnum(buildTargetName, BuildTarget.NoTarget);
     }
 
     static string GetBuildPath()
@@ -75,8 +77,7 @@ static class BuildCommand
 
     static BuildOptions GetBuildOptions()
     {
-        string buildOptions = GetArgument("customBuildOptions");
-        return buildOptions == "AcceptExternalModificationsToPlayer" ? BuildOptions.AcceptExternalModificationsToPlayer : BuildOptions.None;
+        return BuildOptions.None;
     }
 
     static TEnum ToEnum<TEnum>(this string strEnumValue, TEnum defaultValue)
@@ -92,24 +93,28 @@ static class BuildCommand
     static string getEnv(string key, bool secret = false, bool verbose = true)
     {
         var env_var = Environment.GetEnvironmentVariable(key);
-        if (verbose)
+
+        if (!verbose)
         {
-            if (env_var != null)
+            return env_var;
+        }
+
+        if (env_var == null)
+        {
+            Console.WriteLine(":: env['" + key + "'] is null");
+        }
+        else
+        {
+            if (secret)
             {
-                if (secret)
-                {
-                    Console.WriteLine(":: env['" + key + "'] set");
-                }
-                else
-                {
-                    Console.WriteLine(":: env['" + key + "'] set to '" + env_var + "'");
-                }
+                Console.WriteLine(":: env['" + key + "'] set");
             }
             else
             {
-                Console.WriteLine(":: env['" + key + "'] is null");
+                Console.WriteLine(":: env['" + key + "'] set to '" + env_var + "'");
             }
         }
+
         return env_var;
     }
 
