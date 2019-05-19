@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -26,6 +26,12 @@ public class CannonScript : MonoBehaviour
     string vertical = "Vertical";
     string fire1 = "Fire1";
     AudioSource audioSource;
+    [SerializeField]
+    float spinTimeModifier = .25f;
+    float spinTime = .25f;
+    [SerializeField]
+    float spinSpeedModifier = .25f;
+    float spinSpeed = .25f;
 
     void Start()
     {
@@ -40,7 +46,8 @@ public class CannonScript : MonoBehaviour
         MoveCannon(Input.GetAxis(vertical));
         RotateCannon(Input.GetAxis(horizontal));
 
-        if (isCooling) {
+        if (isCooling)
+        {
             CoolShot();
             return;
         }
@@ -50,16 +57,19 @@ public class CannonScript : MonoBehaviour
             ChargeShot();
         }
 
-        if (Input.GetButtonUp(fire1)) {
+        if (Input.GetButtonUp(fire1))
+        {
             Fire();
             isCooling = true;
         }
     }
 
-    private void ChargeShot() {
+    private void ChargeShot()
+    {
         shotPower.Value += .01f;
 
-        if (shotPower.Value > 1) {
+        if (shotPower.Value > 1)
+        {
             shotPower.Value = 1;
         }
     }
@@ -85,7 +95,7 @@ public class CannonScript : MonoBehaviour
         transform.Rotate(0, 0, rotateSpeed * direction);
     }
 
-    private void Fire() 
+    private void Fire()
     {
         var spawnPoint = transform.Find("CannonballSpawnPoint").gameObject.transform;
         var ball = Instantiate(cannonball, new Vector2(spawnPoint.position.x, spawnPoint.position.y), Quaternion.identity);
@@ -118,5 +128,28 @@ public class CannonScript : MonoBehaviour
         var crateYs = crateHolder.GetComponentsInChildren<Transform>().ToList().Where(t => t.gameObject.tag == player).Select(t => t.position.y);
 
         return crateYs.Any() ? crateYs.Max() : initialMaxY;
+    }
+
+    IEnumerator Spin()
+    {
+        var time = 0f;
+        var turnIncrement = new Vector3(0, 0, spinSpeed * Time.deltaTime);
+
+        while (time < spinTime)
+        {
+            time += Time.deltaTime;
+            transform.Rotate(turnIncrement);
+            yield return null;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name != "Cannonball(Clone)")
+            return;
+
+        spinTime = other.relativeVelocity.magnitude * spinTimeModifier;
+        spinSpeed = other.relativeVelocity.magnitude * spinSpeedModifier;
+        StartCoroutine(Spin());
     }
 }
