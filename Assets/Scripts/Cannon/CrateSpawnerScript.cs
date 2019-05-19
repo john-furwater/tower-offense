@@ -1,19 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEditor;
+using UnityEngine;
 
 public class CrateSpawnerScript : MonoBehaviour
 {
     [SerializeField]
     bool isPlayerOne = true;
     [SerializeField]
-    GameObject crate;
+    GameObject[] BlockList;
     [SerializeField]
     float spawnTime = 5f;
     string horizontal = "Horizontal2";
 
+    private float startXPos = 0.0f;
+
     void Start()
     {
         horizontal += isPlayerOne ? "_P1" : "_P2";
-        InvokeRepeating("SpawnCrate", spawnTime, spawnTime);
+        InvokeRepeating("SpawnNewBlock", spawnTime, spawnTime);
+        startXPos = transform.position.x;
     }
 
     private void Update()
@@ -28,9 +33,15 @@ public class CrateSpawnerScript : MonoBehaviour
         transform.position = new Vector2(positionX, transform.position.y);
     }
 
-    void SpawnCrate() {
-        var newCrate = Instantiate(crate, transform);
+    void SpawnNewBlock() {
+        // reset block position
+        transform.position = new Vector2(startXPos, transform.position.y);
+        var newCrate = Instantiate(GetRandomBlock(), transform);
 
         newCrate.gameObject.tag = isPlayerOne ? "P1" : "P2";
+    }
+
+    private GameObject GetRandomBlock() {
+        return BlockList[Random.Range(0, BlockList.Length-1)];
     }
 }
