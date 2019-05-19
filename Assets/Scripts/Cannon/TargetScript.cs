@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class TargetScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject gameOver;
+    [SerializeField]
+    bool isPlayerOne = true;
+    [SerializeField]
+    Text winnerText;
     AudioSource audioSource;
 
     void Start()
@@ -18,6 +23,14 @@ public class TargetScript : MonoBehaviour
 
         audioSource.Play();
         transform.localScale = new Vector2(0, 0);
+        SetWinnerText();
         gameOver.SetActive(true);
+    }
+
+    void SetWinnerText()
+    {
+        var winner = isPlayerOne ? "One" : "Two";
+
+        winnerText.text = "Player " + winner + " Wins";
     }
 }
