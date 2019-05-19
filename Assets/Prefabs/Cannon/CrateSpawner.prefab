@@ -43,4 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0f4e24affe94a92807475894153ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crate: {fileID: 3518656968543515834, guid: 67442f53dce8740e3b60ed7d4322e23d, type: 3}
+  isPlayerOne: 1
+  crate: {fileID: 7189746705518030228, guid: c6c1de7157be8814fa7d975fc260c55b, type: 3}
+  spawnTime: 5
+  BlockList:
+  - {fileID: 7189746705518030228, guid: c6c1de7157be8814fa7d975fc260c55b, type: 3}
+  - {fileID: 7189746705518030228, guid: 5f236358a201f1044b7605e1fb168906, type: 3}
+  - {fileID: 7189746705518030228, guid: 34ea6b85fbb7af045a92fc064ef1d9e7, type: 3}
+  - {fileID: 7189746705518030228, guid: f7273413fe5fba8479f3f078c61af9b7, type: 3}
+  - {fileID: 7189746705518030228, guid: b1f923e4675483f4ca1faefc8eddd2ce, type: 3}
