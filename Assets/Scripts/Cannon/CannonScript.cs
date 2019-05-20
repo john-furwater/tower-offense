@@ -20,12 +20,13 @@ public class CannonScript : MonoBehaviour
     FloatVariable shotPower;
     [SerializeField]
     GameObject cannonball;
+    [SerializeField]
+    GameEvent CannonFiredEvent;
     float minimumShotPower = 0.3f;
     bool isCooling;
     string horizontal = "Horizontal";
     string vertical = "Vertical";
     string fire1 = "Fire1";
-    AudioSource audioSource;
     [SerializeField]
     float spinTimeModifier = .25f;
     float spinTime = .25f;
@@ -34,8 +35,7 @@ public class CannonScript : MonoBehaviour
     float spinSpeed = .25f;
 
     void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
+    { 
         horizontal += isPlayerOne ? "_P1" : "_P2";
         vertical += isPlayerOne ? "_P1" : "_P2";
         fire1 += isPlayerOne ? "_P1" : "_P2";
@@ -97,13 +97,12 @@ public class CannonScript : MonoBehaviour
 
     private void Fire()
     {
+        CannonFiredEvent.Raise();
         var spawnPoint = transform.Find("CannonballSpawnPoint").gameObject.transform;
         var ball = Instantiate(cannonball, new Vector2(spawnPoint.position.x, spawnPoint.position.y), Quaternion.identity);
         var rbody = ball.GetComponent<Rigidbody2D>();
 
         rbody.velocity = transform.right * velocity * (shotPower.Value + minimumShotPower);
-
-        audioSource.Play();
     }
 
     private float GetPositionY(float direction)
@@ -125,6 +124,10 @@ public class CannonScript : MonoBehaviour
     {
         var player = isPlayerOne ? "P1" : "P2";
         var crateHolder = GameObject.Find("CrateHolder");
+
+        if (crateHolder == null)
+            return initialMaxY;
+
         var crateYs = crateHolder.GetComponentsInChildren<Transform>().ToList().Where(t => t.gameObject.tag == player).Select(t => t.position.y);
 
         return crateYs.Any() ? crateYs.Max() : initialMaxY;

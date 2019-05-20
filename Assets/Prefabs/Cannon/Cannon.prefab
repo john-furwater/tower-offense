@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: -5635952300333348243}
   - component: {fileID: -8994811867031507629}
   - component: {fileID: 7267190212767143202}
+  - component: {fileID: 3650774905245793974}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -136,6 +137,7 @@ MonoBehaviour:
   shotPower: {fileID: 11400000, guid: c34fca08caff34d04bb6d3473e8b2010, type: 2}
   cannonball: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
     type: 3}
+  CannonFiredEvent: {fileID: 11400000, guid: fe7d8fd1ad1ab40bdbdb66d5f1a49a1b, type: 2}
   spinTimeModifier: 0.02
   spinSpeedModifier: 200
 --- !u!61 &-5635952300333348243
@@ -149,7 +151,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.046073914}
   m_SpriteTilingProperty:
@@ -272,3 +274,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3650774905245793974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5990615916126286468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a839b26cc94a84d02a55a696eced8403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: fe7d8fd1ad1ab40bdbdb66d5f1a49a1b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8994811867031507629}
+        m_MethodName: PlayCannonFired
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
