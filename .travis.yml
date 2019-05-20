@@ -7,51 +7,37 @@ env:
 services:
 - docker
 before_install:
-- openssl aes-256-cbc -K $encrypted_5ae9c4ac7051_key -iv $encrypted_5ae9c4ac7051_iv -in Unity_v2018.x.ulf.enc -out ./Unity_v2018.x.ulf -d
+- openssl aes-256-cbc -K $encrypted_5ae9c4ac7051_key -iv $encrypted_5ae9c4ac7051_iv
+  -in Unity_v2018.x.ulf.enc -out ./Unity_v2018.x.ulf -d
 - export UNITY_LICENSE_CONTENT=`cat Unity_v2018.x.ulf`
 - rm Unity_v2018.x.ulf
 - docker pull $IMAGE_NAME
 jobs:
   include:
-  # - stage: test
-  #   script: "chmod +x ./ci/docker_test.sh && ./ci/docker_test.sh"
-  #   env: TEST_PLATFORM=editmode
-  #   addons:
-  #     artifacts:
-  #       target_paths:
-  #       - "$(pwd)/$TEST_PLATFORM-results.xml"
-  # - stage: test
-  #   script: "chmod +x ./ci/docker_test.sh && ./ci/docker_test.sh"
-  #   env: TEST_PLATFORM=playmode
-  #   addons:
-  #     artifacts:
-  #       target_paths:
-  #       - "$(pwd)/$TEST_PLATFORM-results.xml"
   - stage: build
     env: BUILD_TARGET=StandaloneLinux64
-    script: "chmod +x ./ci/before_script.sh && chmod +x ./ci/build.sh && chmod +x ./ci/docker_build.sh && ./ci/docker_build.sh"
+    script: chmod +x ./ci/before_script.sh && chmod +x ./ci/build.sh && chmod +x ./ci/docker_build.sh
+      && ./ci/docker_build.sh
     addons:
       artifacts:
         target_paths:
         - "./Builds/"
   - stage: build
     env: BUILD_TARGET=StandaloneOSX
-    script: "chmod +x ./ci/before_script.sh && chmod +x ./ci/build.sh && chmod +x ./ci/docker_build.sh && ./ci/docker_build.sh"
+    script: chmod +x ./ci/before_script.sh && chmod +x ./ci/build.sh && chmod +x ./ci/docker_build.sh
+      && ./ci/docker_build.sh
     addons:
       artifacts:
         target_paths:
         - "./Builds/"
   - stage: build
     env: BUILD_TARGET=StandaloneWindows64
-    script: "chmod +x ./ci/before_script.sh && chmod +x ./ci/build.sh && chmod +x ./ci/docker_build.sh &&./ci/docker_build.sh"
+    script: chmod +x ./ci/before_script.sh && chmod +x ./ci/build.sh && chmod +x ./ci/docker_build.sh
+      &&./ci/docker_build.sh
     addons:
       artifacts:
         target_paths:
         - "./Builds/"
-  # - stage: build
-  #   env: BUILD_TARGET=WebGL
-  #   script: "chmod +x ./ci/before_script.sh && chmod +x ./ci/build.sh && chmod +x ./ci/docker_build.sh && ./ci/docker_build.sh"
-  #   addons:
-  #     artifacts:
-  #       target_paths:
-  #       - "./Builds/"
+notifications:
+  slack:
+    secure: ILKdQmnUdoYNAoHBNLxpP5D2WZp5DYPJHIKgjbiVd/JdyMvg7Dzvx49lw/WcgD+8w8jV5U2xiqVJRmLEiQ6fdoAhFyU3vIPGPv/pBHab5JBys64uMPCTLnrE+SRvBPTFWkFadb0vF1seU8bifWkxLxa0RXil9Wv+S/IbW8EDvhRxWNN6c//pOo/SgSgdrq/5ZxY3EgtnqzaKBl2wq4s5PPvYnElM/8XWUi+euQV9jSzX8JbCzk7L/CjUeTmdlBP1rryEtjqznFchOAftc40eIz4jlyFi17oU0GASYQljSqJqJdMFb41YTEo5P1nxpW7mypySgLUeu/fyxFIZWSD/oUP3PsRrTx7pRaJkgkeA0I3o8BJ1JA2rUU20214i20L+Gyymmh7whAfLTCM5Ke20f62lOLkBL22i3FZjfePqYKgQSBlXYDif6jUjim61CqPPYyqtdciMMLB/nYh1ViFuOIDVQgBTn7qmBWfpxhQf+FRIB47Vaw0hoMBFJmGysGyGFnN/MQuRZb2GXgx+n6BHePzTIBJmuyZFKEDAeYW02EuPude1K2JzJqqVIpRAEaLAo88RH7Ire0u1QdCmnfF0XBw6a9IZcdfHbHl/Opf/25cqV+vdpvWmd+/WbWfpU2Q7UfCUkv1Y1k7SsZutFAbrV/F4/BMB3cM3wM2EKo655nc=
