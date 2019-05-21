@@ -7,7 +7,7 @@ public class CrateSpawnerScript : MonoBehaviour
     [SerializeField]
     bool isPlayerOne = true;
     [SerializeField]
-    GameObject[] BlockList;
+    CrateScript[] BlockList;
     [SerializeField]
     float spawnTime = 5f;
     string horizontal = "Horizontal2";
@@ -15,6 +15,7 @@ public class CrateSpawnerScript : MonoBehaviour
 
     private float startXPos = 0.0f;
     private Quaternion startRotation;
+    private CrateScript newBlock;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class CrateSpawnerScript : MonoBehaviour
     {
         MoveSpawner(Input.GetAxis(horizontal));
 
-        if (Input.GetButton(rotate))
+        if (Input.GetButtonDown(rotate))
         {
             Rotate();
         }
@@ -37,27 +38,27 @@ public class CrateSpawnerScript : MonoBehaviour
 
     private void Rotate()
     {
-        transform.Rotate(Vector3.forward, transform.rotation.z + 0.5f, Space.Self);
+        if (newBlock == null || !newBlock.canControl) return;
+        newBlock.transform.Rotate(Vector3.forward, 90f, Space.Self);
     }
 
     private void MoveSpawner(float direction)
     {
-        var positionX = transform.position.x + (.1f * direction);
+        if (newBlock == null || !newBlock.canControl) return;
 
-        transform.position = new Vector2(positionX, transform.position.y);
+        var positionX = newBlock.transform.position.x + (.1f * direction);
+
+        newBlock.transform.position = new Vector2(positionX, newBlock.transform.position.y);
     }
 
     void SpawnNewBlock() {
-        // reset block position
-        transform.position = new Vector2(startXPos, transform.position.y);
-        transform.rotation = startRotation;
 
-        var newCrate = Instantiate(GetRandomBlock(), transform);
+        newBlock = Instantiate(GetRandomBlock(), transform);
 
-        newCrate.gameObject.tag = isPlayerOne ? "P1" : "P2";
+        newBlock.gameObject.tag = isPlayerOne ? "P1" : "P2";
     }
 
-    private GameObject GetRandomBlock() {
+    private CrateScript GetRandomBlock() {
         return BlockList[Random.Range(0, BlockList.Length-1)];
     }
 }
