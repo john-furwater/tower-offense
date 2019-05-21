@@ -217,22 +217,6 @@ PrefabInstance:
       propertyPath: BypassListenerEffects
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
-        type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
-        type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
-        type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 11500000, guid: 56c8bc941757c44d7905055cad19e893,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 926ab2bd03afb434f9d527fe8f4ff864, type: 3}
 --- !u!1 &1689671306 stripped
