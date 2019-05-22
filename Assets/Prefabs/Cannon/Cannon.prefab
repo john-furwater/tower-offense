@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6301569966379113363}
+  - component: {fileID: 8976572350459193201}
   m_Layer: 0
-  m_Name: CannonballSpawnPoint
+  m_Name: CannonballSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,6 +31,23 @@ Transform:
   m_Father: {fileID: 5990615916126286466}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8976572350459193201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591659681904529923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd85b9dee86c4c08855d567f79a4488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannonball: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
+    type: 3}
+  minimumShotPower: 0.3
+  shotPower: {fileID: 11400000, guid: c34fca08caff34d04bb6d3473e8b2010, type: 2}
+  velocity: 20
 --- !u!1 &5990615916126286468
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,6 +64,7 @@ GameObject:
   - component: {fileID: 7267190212767143202}
   - component: {fileID: 3650774905245793974}
   - component: {fileID: 7232255259054702281}
+  - component: {fileID: 1598521020986149711}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -132,13 +151,10 @@ MonoBehaviour:
   isPlayerOne: 1
   moveSpeed: 0.15
   rotateSpeed: 2
-  velocity: 20
   initialMaxY: -8.3
   minY: -8.75
   shotPower: {fileID: 11400000, guid: c34fca08caff34d04bb6d3473e8b2010, type: 2}
-  cannonball: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
-    type: 3}
-  CannonFiredEvent: {fileID: 11400000, guid: fe7d8fd1ad1ab40bdbdb66d5f1a49a1b, type: 2}
+  CannonFiredEvent: {fileID: 11400000, guid: 029af6efd36fd40858011b05ed11e778, type: 2}
   spinTimeModifier: 0.02
   spinSpeedModifier: 200
 --- !u!61 &-5635952300333348243
@@ -287,12 +303,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a839b26cc94a84d02a55a696eced8403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: fe7d8fd1ad1ab40bdbdb66d5f1a49a1b, type: 2}
+  Event: {fileID: 11400000, guid: 029af6efd36fd40858011b05ed11e778, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -8994811867031507629}
-        m_MethodName: PlayCannonFired
+      - m_Target: {fileID: 7232255259054702281}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -302,8 +318,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7232255259054702281}
-        m_MethodName: Play
+      - m_Target: {fileID: 8976572350459193201}
+        m_MethodName: SpawnCannonball
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -8994811867031507629}
+        m_MethodName: PlayCannonFired
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -388,7 +415,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -451,7 +478,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -505,7 +532,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1767,7 +1794,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -1824,7 +1851,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2351,7 +2378,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 0
+    inWorldSpace: 1
   InheritVelocityModule:
     enabled: 0
     m_Mode: 0
@@ -2850,7 +2877,7 @@ ParticleSystem:
     inWorldSpace: 0
     multiplyDragByParticleSize: 1
     multiplyDragByParticleVelocity: 1
-    dampen: 0
+    dampen: 1
     drag:
       serializedVersion: 2
       minMaxState: 0
@@ -4973,3 +5000,65 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!199 &1598521020986149711
+ParticleSystemRenderer:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5990615916126286468}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_RenderMode: 0
+  m_SortMode: 0
+  m_MinParticleSize: 0
+  m_MaxParticleSize: 0.5
+  m_CameraVelocityScale: 0
+  m_VelocityScale: 0
+  m_LengthScale: 2
+  m_SortingFudge: 0
+  m_NormalDirection: 1
+  m_ShadowBias: 0
+  m_RenderAlignment: 0
+  m_Pivot: {x: 0, y: 0, z: 0}
+  m_Flip: {x: 0, y: 0, z: 0}
+  m_UseCustomVertexStreams: 0
+  m_EnableGPUInstancing: 1
+  m_ApplyActiveColorSpace: 1
+  m_AllowRoll: 1
+  m_VertexStreams: 00010304
+  m_Mesh: {fileID: 0}
+  m_Mesh1: {fileID: 0}
+  m_Mesh2: {fileID: 0}
+  m_Mesh3: {fileID: 0}
+  m_MaskInteraction: 0
