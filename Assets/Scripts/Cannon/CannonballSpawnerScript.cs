@@ -17,15 +17,13 @@ public class CannonballSpawnerScript : MonoBehaviour
 
     public void SpawnCannonball()
     {
-        Debug.Log("spawning");
-
         var ball = Instantiate(cannonball, transform.position, Quaternion.identity);
         var rbody = ball.GetComponent<Rigidbody2D>();
 
         rbody.velocity = transform.right * GetFinalShotPower();
     }
 
-    float GetFinalShotPower() 
+    float GetFinalShotPower()
     {
         return velocity * (shotPower.Value + minimumShotPower);
     }
