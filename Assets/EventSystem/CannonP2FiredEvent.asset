@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 854652ebb777f48ff85b551c430531e0, type: 3}
-  m_Name: CannonFiredEvent
+  m_Name: CannonP2FiredEvent
   m_EditorClassIdentifier: 

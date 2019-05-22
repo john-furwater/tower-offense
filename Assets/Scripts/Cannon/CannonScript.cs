@@ -11,15 +11,11 @@ public class CannonScript : MonoBehaviour
     [SerializeField]
     float rotateSpeed = 2f;
     [SerializeField]
-    float velocity = 15f;
-    [SerializeField]
     float initialMaxY = -8.3f;
     [SerializeField]
     float minY = -8.75f;
     [SerializeField]
     FloatVariable shotPower;
-    [SerializeField]
-    GameObject cannonball;
     [SerializeField]
     GameEvent CannonFiredEvent;
     float minimumShotPower = 0.3f;
@@ -98,11 +94,6 @@ public class CannonScript : MonoBehaviour
     private void Fire()
     {
         CannonFiredEvent.Raise();
-        var spawnPoint = transform.Find("CannonballSpawnPoint").gameObject.transform;
-        var ball = Instantiate(cannonball, new Vector2(spawnPoint.position.x, spawnPoint.position.y), Quaternion.identity);
-        var rbody = ball.GetComponent<Rigidbody2D>();
-
-        rbody.velocity = transform.right * velocity * (shotPower.Value + minimumShotPower);
     }
 
     private float GetPositionY(float direction)
