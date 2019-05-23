@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab31d419827d24646b72bda251d439aa, type: 3}
   m_Name: CannonballP1
   m_EditorClassIdentifier: 
-  Default: {fileID: 0}
+  Default: {fileID: 6796431896406468129, guid: 862ea471921dc459bba6cb494f2bc466, type: 3}

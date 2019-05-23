@@ -18,7 +18,6 @@ public class CannonScript : MonoBehaviour
     FloatVariable shotPower;
     [SerializeField]
     GameEvent CannonFiredEvent;
-    float minimumShotPower = 0.3f;
     bool isCooling;
     string horizontal = "Horizontal";
     string vertical = "Vertical";

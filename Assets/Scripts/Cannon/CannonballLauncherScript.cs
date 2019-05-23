@@ -13,7 +13,12 @@ public class CannonballLauncherScript : MonoBehaviour
 
     public void LaunchCannonball()
     {
-        cannonball.Launch(transform.position, transform.right * GetFinalShotPower());
+        var next = cannonball.Next.GetComponent<ICannonball>();
+
+        if (next == null)
+            return;
+
+        next.Launch(transform.position, transform.right * GetFinalShotPower());
     }
 
     float GetFinalShotPower()
