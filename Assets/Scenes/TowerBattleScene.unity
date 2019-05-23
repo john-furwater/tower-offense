@@ -463,6 +463,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 11f3bd1ed93094d52aaaaa35e973a337,
         type: 2}
+    - target: {fileID: 8899664048131913524, guid: 926ab2bd03afb434f9d527fe8f4ff864,
+        type: 3}
+      propertyPath: shotPower
+      value: 
+      objectReference: {fileID: 11400000, guid: 11f3bd1ed93094d52aaaaa35e973a337,
+        type: 2}
+    - target: {fileID: 8899664048131913524, guid: 926ab2bd03afb434f9d527fe8f4ff864,
+        type: 3}
+      propertyPath: cannonball
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a95de4d3cf4d4035a2b8552e580885a,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 926ab2bd03afb434f9d527fe8f4ff864, type: 3}
 --- !u!1 &519420028

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6301569966379113363}
-  - component: {fileID: 8976572350459193201}
+  - component: {fileID: 8899664048131913524}
   m_Layer: 0
-  m_Name: CannonballSpawner
+  m_Name: CannonballLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 5990615916126286466}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8976572350459193201
+--- !u!114 &8899664048131913524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,11 +40,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 591659681904529923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd85b9dee86c4c08855d567f79a4488, type: 3}
+  m_Script: {fileID: 11500000, guid: 22d89c8c4387b4c198636420063bc985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonball: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
-    type: 3}
+  cannonball: {fileID: 11400000, guid: 889db779832234ae899daa59ee229346, type: 2}
   minimumShotPower: 0.3
   shotPower: {fileID: 11400000, guid: c34fca08caff34d04bb6d3473e8b2010, type: 2}
   velocity: 20
@@ -318,8 +317,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8976572350459193201}
-        m_MethodName: SpawnCannonball
+      - m_Target: {fileID: 8899664048131913524}
+        m_MethodName: LaunchCannonball
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
