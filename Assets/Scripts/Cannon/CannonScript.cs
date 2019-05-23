@@ -29,9 +29,13 @@ public class CannonScript : MonoBehaviour
     [SerializeField]
     float spinSpeedModifier = .25f;
     float spinSpeed = .25f;
+    Transform _transform;
+    GameObject crateHolder;
 
     void Start()
-    { 
+    {
+        _transform = transform;
+        crateHolder = GameObject.Find("CrateHolder");
         horizontal += isPlayerOne ? "_P1" : "_P2";
         vertical += isPlayerOne ? "_P1" : "_P2";
         fire1 += isPlayerOne ? "_P1" : "_P2";
@@ -83,12 +87,12 @@ public class CannonScript : MonoBehaviour
 
     private void MoveCannon(float direction)
     {
-        transform.position = new Vector2(transform.position.x, GetPositionY(direction));
+        _transform.position = new Vector2(_transform.position.x, GetPositionY(direction));
     }
 
     private void RotateCannon(float direction)
     {
-        transform.Rotate(0, 0, rotateSpeed * direction);
+        _transform.Rotate(0, 0, rotateSpeed * direction);
     }
 
     private void Fire()
@@ -98,7 +102,7 @@ public class CannonScript : MonoBehaviour
 
     private float GetPositionY(float direction)
     {
-        var positionY = transform.position.y + (moveSpeed * direction);
+        var positionY = _transform.position.y + (moveSpeed * direction);
 
         if (positionY < minY)
             return minY;
@@ -114,7 +118,6 @@ public class CannonScript : MonoBehaviour
     private float GetMaxY()
     {
         var player = isPlayerOne ? "P1" : "P2";
-        var crateHolder = GameObject.Find("CrateHolder");
 
         if (crateHolder == null)
             return initialMaxY;
@@ -132,7 +135,7 @@ public class CannonScript : MonoBehaviour
         while (time < spinTime)
         {
             time += Time.deltaTime;
-            transform.Rotate(turnIncrement);
+            _transform.Rotate(turnIncrement);
             yield return null;
         }
     }
