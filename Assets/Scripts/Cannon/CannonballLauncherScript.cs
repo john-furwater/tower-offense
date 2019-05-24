@@ -18,7 +18,7 @@ public class CannonballLauncherScript : MonoBehaviour
         if (next == null)
             return;
 
-        next.Launch(transform.position, transform.right * GetFinalShotPower());
+        next.Launch(transform, GetFinalShotPower());
     }
 
     float GetFinalShotPower()

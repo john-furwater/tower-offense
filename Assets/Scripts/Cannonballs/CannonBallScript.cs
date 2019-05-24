@@ -2,10 +2,10 @@
 
 public class CannonballScript : MonoBehaviour, ICannonball
 {
-    public void Launch(Vector2 position, Vector2 velocity) 
+    public void Launch(Transform parentTransform, float shotPower) 
     {
-        var cannonball = Instantiate(gameObject, position, Quaternion.identity);
+        var cannonball = Instantiate(gameObject, parentTransform.position, Quaternion.identity);
 
-        cannonball.GetComponent<Rigidbody2D>().velocity = velocity;
+        cannonball.GetComponent<Rigidbody2D>().velocity = parentTransform.right * shotPower;
     }
 }
