@@ -1,20 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6688612556364897290
+--- !u!114 &3102519820579688861
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9071112309452645930}
+  m_GameObject: {fileID: 8154593246958269636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dadea1d5e2e7456e9428015d454f762, type: 3}
+  m_Script: {fileID: 11500000, guid: dda410e5506ec4a3082eba3fa109244d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionOffset: 0.5
-  shotAngleOffset: 5
---- !u!1001 &6803278422057050776
+--- !u!1001 &5954856441715912822
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -24,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
         type: 3}
       propertyPath: m_Name
-      value: SpreadShot
+      value: RifleShot
       objectReference: {fileID: 0}
     - target: {fileID: 2560588000808617132, guid: 082bf9574aa6144daa8b3bdd142e5d44,
         type: 3}
@@ -84,9 +82,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -2134111205199974380, guid: 082bf9574aa6144daa8b3bdd142e5d44, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 082bf9574aa6144daa8b3bdd142e5d44, type: 3}
---- !u!1 &9071112309452645930 stripped
+--- !u!1 &8154593246958269636 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
     type: 3}
-  m_PrefabInstance: {fileID: 6803278422057050776}
+  m_PrefabInstance: {fileID: 5954856441715912822}
   m_PrefabAsset: {fileID: 0}
