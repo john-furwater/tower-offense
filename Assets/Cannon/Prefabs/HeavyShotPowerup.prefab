@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2282032418806785410}
   - component: {fileID: 5571508721950128779}
   m_Layer: 0
-  m_Name: Powerup
+  m_Name: HeavyShotPowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,8 +91,8 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -109,3 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d92b660afa614fc7bd97ae63284827e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextShot: {fileID: 6796431896406468129, guid: 862ea471921dc459bba6cb494f2bc466,
+    type: 3}
+  playerOneCannonball: {fileID: 11400000, guid: 889db779832234ae899daa59ee229346,
+    type: 2}
+  playerTwoCannonball: {fileID: 11400000, guid: 4a95de4d3cf4d4035a2b8552e580885a,
+    type: 2}

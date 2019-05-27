@@ -18,7 +18,9 @@ public class TargetScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name != "Cannonball(Clone)")
+        var cannonball = other.transform.GetComponent<ICannonball>();
+
+        if (cannonball == null)
             return;
 
         audioSource.Play();
