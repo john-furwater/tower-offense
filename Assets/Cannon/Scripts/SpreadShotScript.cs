@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 
-public class SpreadShotScript : MonoBehaviour, ICannonball
+public class SpreadShotScript : CannonballScript, ICannonball
 {
     [SerializeField]
     float positionOffset = 0.5f;
     [SerializeField]
     float shotAngleOffset = 10f;
+    float shotPower;
 
-    public void Launch(Transform parentTransform, float shotPower)
+    public override void Launch(Transform parentTransform, float shotPower)
     {
         var upper = Instantiate(gameObject, parentTransform.TransformPoint(Vector3.up * positionOffset * 2), parentTransform.rotation);
         var uppermid = Instantiate(gameObject, parentTransform.TransformPoint(Vector3.up * positionOffset), parentTransform.rotation);
@@ -15,24 +16,20 @@ public class SpreadShotScript : MonoBehaviour, ICannonball
         var lowermid = Instantiate(gameObject, parentTransform.TransformPoint(Vector3.up * -positionOffset), parentTransform.rotation);
         var lower = Instantiate(gameObject, parentTransform.TransformPoint(Vector3.up * -positionOffset * 2), parentTransform.rotation);
 
-        upper.transform.Rotate(0, 0, shotAngleOffset * 2);
-        uppermid.transform.Rotate(0, 0, shotAngleOffset);
-        lowermid.transform.Rotate(0, 0, -shotAngleOffset);
-        lower.transform.Rotate(0, 0, -shotAngleOffset * 2);
-        upper.GetComponent<Rigidbody2D>().velocity = upper.transform.right * shotPower;
-        uppermid.GetComponent<Rigidbody2D>().velocity = uppermid.transform.right * shotPower;
-        mid.GetComponent<Rigidbody2D>().velocity = mid.transform.right * shotPower;
-        lowermid.GetComponent<Rigidbody2D>().velocity = lowermid.transform.right * shotPower;
-        lower.GetComponent<Rigidbody2D>().velocity = lower.transform.right * shotPower;
+        this.shotPower = shotPower;
+
+        RotateAndLaunch(upper, 2);
+        RotateAndLaunch(uppermid, 1);
+        RotateAndLaunch(mid, 0);
+        RotateAndLaunch(lowermid, -1);
+        RotateAndLaunch(lower, -2);
     }
 
-    public Vector2 GetUpperPosition(Transform parentTransform)
-    {
-        return parentTransform.TransformPoint(Vector3.up * positionOffset);
-    }
+    private void RotateAndLaunch(GameObject cannonball, float angleModifier) {
+        var _transform = cannonball.transform;
 
-    public Vector2 GetLowerPosition(Transform parentTransform)
-    {
-        return parentTransform.TransformPoint(-Vector3.up * positionOffset);
+        cannonball.GetComponent<CannonballScript>().IsPlayerOne = IsPlayerOne;
+        _transform.Rotate(0, 0, shotAngleOffset * angleModifier);
+        cannonball.GetComponent<Rigidbody2D>().velocity = _transform.right * shotPower;
     }
 }

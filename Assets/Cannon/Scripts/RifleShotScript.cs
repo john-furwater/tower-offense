@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 
-public class RifleShotScript : MonoBehaviour, ICannonball
+public class RifleShotScript : CannonballScript, ICannonball
 {
     [SerializeField]
     float multiplier = 8f;
 
-    public void Launch(Transform parentTransform, float shotPower)
+    public override void Launch(Transform parentTransform, float shotPower)
     {
         var cannonball = Instantiate(gameObject, parentTransform.position, Quaternion.identity);
 
+        cannonball.GetComponent<CannonballScript>().IsPlayerOne = IsPlayerOne;
         cannonball.GetComponent<Rigidbody2D>().velocity = parentTransform.right * shotPower * multiplier;
     }
 }
