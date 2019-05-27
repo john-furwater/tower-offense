@@ -10,6 +10,8 @@ public class CannonballLauncherScript : MonoBehaviour
     FloatVariable shotPower;
     [SerializeField]
     float velocity = 20f;
+    [SerializeField]
+    bool isPlayerOne = true;
 
     public void LaunchCannonball()
     {
@@ -18,6 +20,7 @@ public class CannonballLauncherScript : MonoBehaviour
         if (next == null)
             return;
 
+        next.IsPlayerOne = isPlayerOne;
         next.Launch(transform, GetFinalShotPower());
     }
 
