@@ -11,7 +11,8 @@ public class PowerupScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        var cannonball = other.gameObject.GetComponent<ICannonball>();
+        var otherGameObject = other.gameObject;
+        var cannonball = otherGameObject.GetComponent<ICannonball>();
 
         if (cannonball == null)
             return;
@@ -20,5 +21,6 @@ public class PowerupScript : MonoBehaviour
         
         playerCannonball.Next = nextShot;
         Destroy(gameObject);
+        Destroy(otherGameObject);
     }
 }
