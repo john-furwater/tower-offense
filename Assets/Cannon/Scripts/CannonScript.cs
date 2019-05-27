@@ -141,7 +141,9 @@ public class CannonScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name != "Cannonball(Clone)")
+        var cannonball = other.transform.GetComponent<ICannonball>();
+
+        if (cannonball == null || cannonball.IsPlayerOne == isPlayerOne)
             return;
 
         spinTime = other.relativeVelocity.magnitude * spinTimeModifier;

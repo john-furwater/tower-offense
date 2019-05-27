@@ -9,10 +9,10 @@ public class PowerupScript : MonoBehaviour
     [SerializeField]
     CannonballVariable playerTwoCannonball;
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         var cannonball = other.gameObject.GetComponent<ICannonball>();
-        Debug.Log(cannonball);
+
         if (cannonball == null)
             return;
 
