@@ -19,6 +19,6 @@ public class PowerupSpawnerScript : MonoBehaviour
 
     GameObject GetNextPowerup()
     {
-        return powerups[Random.Range(0, powerups.Length - 1)];
+        return powerups[Random.Range(0, powerups.Length)];
     }
 }

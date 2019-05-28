@@ -3,11 +3,19 @@
 public class PowerupScript : MonoBehaviour
 {
     [SerializeField]
+    float lifetime;
+    [SerializeField]
     GameObject nextShot;
     [SerializeField]
     CannonballVariable playerOneCannonball;
     [SerializeField]
     CannonballVariable playerTwoCannonball;
+
+    private void Awake()
+    {
+        if (lifetime > 0)
+            Destroy(gameObject, lifetime);
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
