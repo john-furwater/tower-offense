@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d92b660afa614fc7bd97ae63284827e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 5
   nextShot: {fileID: 6796431896406468129, guid: 862ea471921dc459bba6cb494f2bc466,
     type: 3}
   playerOneCannonball: {fileID: 11400000, guid: 889db779832234ae899daa59ee229346,
