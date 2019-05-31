@@ -10,10 +10,14 @@ public class TargetScript : MonoBehaviour
     [SerializeField]
     Text winnerText;
     AudioSource audioSource;
+    ParticleSystem particleSystem;
+    Transform _transform;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        particleSystem = GetComponent<ParticleSystem>();
+        _transform = transform;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -24,7 +28,9 @@ public class TargetScript : MonoBehaviour
             return;
 
         audioSource.Play();
-        transform.localScale = new Vector2(0, 0);
+        particleSystem.Play();
+        _transform.GetComponent<SpriteRenderer>().enabled = false;
+        _transform.GetComponent<CircleCollider2D>().enabled = false;
         SetWinnerText();
         gameOver.SetActive(true);
     }
