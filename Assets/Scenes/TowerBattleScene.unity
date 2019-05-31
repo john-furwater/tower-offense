@@ -2034,6 +2034,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 5101111112721468384, guid: 952d611f3d1094abb8a87a1770905cd6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5101111112721468390, guid: 952d611f3d1094abb8a87a1770905cd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2266,6 +2271,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1747386722}
     m_Modifications:
+    - target: {fileID: -6552572459268709569, guid: b45899807912547b19008404262f1e98,
+        type: 3}
+      propertyPath: m_Flip.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6552572459268709569, guid: b45899807912547b19008404262f1e98,
+        type: 3}
+      propertyPath: m_AllowRoll
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6415675462607593079, guid: b45899807912547b19008404262f1e98,
         type: 3}
       propertyPath: m_Name
