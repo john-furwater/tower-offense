@@ -11,8 +11,20 @@ line.
 ## Unity version:
 2019.1.3f1
 
-## Test Scenes:
-### TowerBattleScene
+## Gameplay Mechanics
+
+The longer you hold the `Fire Cannon` button down, the more velocity the
+`Cannonball` will get shot with.  Once the button gets released, you must wait
+until the `Charge Bar` goes away before you can fire again.
+
+Shooting different power-ups that spawn give you different cannonball types.
+They include:
+* Heavy Shot - A massive cannonball with a heavy massive
+* Rifle Shot - A fast cannonball that does not need to be charged
+* Spread Shot - Five cannonballs fan out
+
+## Controls
+
 Keyboard controls are as follows:
 
 |   Axis               | Player 1 | Player 2 |
@@ -39,65 +51,26 @@ Gamepad controls are as follows:
 | Move Crate Right     | RS Right |
 | Rotate Crate 90&deg; | L Button |
 
-The longer you hold the `Fire Cannon` button down, the more velocity the
-`Cannonball` will get shot with.  Once the button gets released, you must wait
-until the `Charge Bar` goes away before you can fire again.
+## Test Scenes:
+### TowerBattleScene
+
+This scene contains all of the gameplay intended for a two-player match.
 
 You can move the `Cannon` up as far as the highest `Crate` from your side.
 `Crates` fall every 5 seconds and a `Stone` falls between sides every 3 seconds.
 Only a `Cannonball` can destroy the `Target`.  If the `Target` on your side gets
 destroyed, your opponent wins.
 
-Shooting different power-ups that spawn give you different cannonball types.
-They include:
-* Heavy Shot - A massive cannonball with a heavy massive
-* Rifle Shot - A fast cannonball that does not need to be charged
-* Spread Shot - Five cannonballs fan out
-
 ### CannonTestScene
-This is for testing out the `Cannon`.  You can `Fire`, `Move`, and `Rotate` the
-`Cannon`.
 
-Keyboard controls are as follows:
-
-|   Axis               | Button |
-| -------------------- |:------:|
-| Move Cannon Up       | w      |
-| Move Cannon Down     | s      |
-| Rotate Cannon Left   | a      |
-| Rotate Cannon Right  | d      |
-| Fire Cannon          | e      |
-
-Gamepad controls are as follows:
-
-|   Axis               | Input    |
-| -------------------- |:--------:|
-| Move Cannon Up       | LS Up    |
-| Move Cannon Down     | LS Down  |
-| Rotate Cannon Left   | LS Left  |
-| Rotate Cannon Right  | LS Right |
-| Fire Cannon          | RB       |
-
+This is for testing out the `Cannon` functionality.  You can `Fire`, `Move`, and
+`Rotate` the `Cannon`.  Each power-up exists as soon as the scene loads as well
+as a randomly generated power-up.
 
 ### BlockTestScene
+
 This is for testing out the `Blocks`.  You can `Move` and `Rotate` the `Blocks`
 as they fall every five seconds.
-
-Keyboard controls are as follows:
-
-|   Axis               | Button |
-| -------------------- |:------:|
-| Move Crate Left      | z      |
-| Move Crate Right     | x      |
-| Rotate Crate 90&deg; | c      |
-
-Gamepad Controls are as follows:
-
-|   Axis               | Input    |
-| -------------------- |:--------:|
-| Move Crate Left      | RS Left  |
-| Move Crate Right     | RS Right |
-| Rotate Crate 90&deg; | LB       |
 
 ## CI Build Pipeline
 Currently using Travis CI (https://travis-ci.com/john-furwater/tower-offense) to
