@@ -423,36 +423,6 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
         type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
-        type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
-        type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
-        type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 1925273340}
-    - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
-        type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: BroadcastMessage
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
-        type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650774905245793974, guid: 926ab2bd03afb434f9d527fe8f4ff864,
-        type: 3}
       propertyPath: Event
       value: 
       objectReference: {fileID: 11400000, guid: fe7d8fd1ad1ab40bdbdb66d5f1a49a1b,
@@ -2271,16 +2241,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1747386722}
     m_Modifications:
-    - target: {fileID: -6552572459268709569, guid: b45899807912547b19008404262f1e98,
-        type: 3}
-      propertyPath: m_Flip.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6552572459268709569, guid: b45899807912547b19008404262f1e98,
-        type: 3}
-      propertyPath: m_AllowRoll
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6415675462607593079, guid: b45899807912547b19008404262f1e98,
         type: 3}
       propertyPath: m_Name
@@ -2351,5 +2311,15 @@ PrefabInstance:
       propertyPath: winnerText
       value: 
       objectReference: {fileID: 1220336535}
+    - target: {fileID: -6552572459268709569, guid: b45899807912547b19008404262f1e98,
+        type: 3}
+      propertyPath: m_Flip.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6552572459268709569, guid: b45899807912547b19008404262f1e98,
+        type: 3}
+      propertyPath: m_AllowRoll
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b45899807912547b19008404262f1e98, type: 3}
