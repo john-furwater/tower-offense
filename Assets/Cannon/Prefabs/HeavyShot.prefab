@@ -12,20 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeavyShot
       objectReference: {fileID: 0}
-    - target: {fileID: -4566802793789987110, guid: 082bf9574aa6144daa8b3bdd142e5d44,
+    - target: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
         type: 3}
-      propertyPath: m_Offset.x
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: -4566802793789987110, guid: 082bf9574aa6144daa8b3bdd142e5d44,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: -4566802793789987110, guid: 082bf9574aa6144daa8b3bdd142e5d44,
-        type: 3}
-      propertyPath: m_Radius
-      value: 1.26
+      propertyPath: m_TagString
+      value: Shot
       objectReference: {fileID: 0}
     - target: {fileID: 2560588000808617132, guid: 082bf9574aa6144daa8b3bdd142e5d44,
         type: 3}
@@ -96,6 +86,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mass
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -4566802793789987110, guid: 082bf9574aa6144daa8b3bdd142e5d44,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: -4566802793789987110, guid: 082bf9574aa6144daa8b3bdd142e5d44,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: -4566802793789987110, guid: 082bf9574aa6144daa8b3bdd142e5d44,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 082bf9574aa6144daa8b3bdd142e5d44, type: 3}

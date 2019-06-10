@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda410e5506ec4a3082eba3fa109244d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiplier: 8
 --- !u!1001 &5954856441715912822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23,6 +24,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RifleShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2560588000808617138, guid: 082bf9574aa6144daa8b3bdd142e5d44,
+        type: 3}
+      propertyPath: m_TagString
+      value: Shot
       objectReference: {fileID: 0}
     - target: {fileID: 2560588000808617132, guid: 082bf9574aa6144daa8b3bdd142e5d44,
         type: 3}
