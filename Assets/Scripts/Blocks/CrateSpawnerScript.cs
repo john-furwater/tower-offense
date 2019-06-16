@@ -12,6 +12,7 @@ public class CrateSpawnerScript : MonoBehaviour
     float spawnTime = 5f;
     string horizontal = "Horizontal2";
     private string rotate = "Rotate";
+    private string rotateCounter = "RotateCounter";
 
     private float startXPos = 0.0f;
     private Quaternion startRotation;
@@ -24,6 +25,7 @@ public class CrateSpawnerScript : MonoBehaviour
         startXPos = transform.position.x;
         startRotation = transform.rotation;
         rotate += isPlayerOne ? "_P1" : "_P2";
+        rotateCounter += isPlayerOne ? "_P1" : "_P2";
     }
 
     private void Update()
@@ -32,14 +34,19 @@ public class CrateSpawnerScript : MonoBehaviour
 
         if (Input.GetButtonDown(rotate))
         {
-            Rotate();
+            Rotate(true);
+        }
+
+        if (Input.GetButtonDown(rotateCounter))
+        {
+            Rotate(false);
         }
     }
 
-    private void Rotate()
+    private void Rotate(bool counterClockwise)
     {
         if (newBlock == null || !newBlock.canControl) return;
-        newBlock.transform.Rotate(Vector3.forward, 90f, Space.Self);
+        newBlock.transform.Rotate(Vector3.forward, counterClockwise ? 90f : -90f, Space.Self);
     }
 
     private void MoveSpawner(float direction)
